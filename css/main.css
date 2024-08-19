@@ -1,0 +1,671 @@
+/* =================== */
+/*   Общие настройки   */
+/* =================== */
+html {
+	--nav-height: 56px;
+	--color-main-translucent: rgb(0 46 65 / 85%);
+	--color-main-dark: rgb(0 35 52);
+	--color-main-dark-translucent: rgb(0 35 50 / 90%);
+	--color-background: rgb(2, 81, 111);
+	--color-navbar: rgb(0 45 65 / 40%);
+	--color-sidenav: rgb(0 27 40);
+	--color-highlight: rgb(0, 220, 255);
+	--color-highlight-translucent: rgb(0 220 255 / 40%);
+	--color-highlight-translucent-darken: rgb(28,151,175,0.3);
+	--color-text-active: #cef2ff;
+	--color-text-inactive: #cef2ffb3;
+	--color-icons: rgb(0 191 255 / 72%);
+	--color-valid: #00d572;
+	--color-invalid: #f44336;
+	--color-active: paleturquoise;
+	--color-disabled: rgb(179 179 179 / 88%);
+	--color-disabled-translucent: #dfdfdf14;
+	--color-shadow: rgb(26 177 207 / 30%);
+}
+body {
+	background-color: var(--color-background);
+	background-image: url(../img/background-image.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100% !important;
+	min-width: 280px;
+	font-family: "Exo 2", sans-serif;
+}
+/* Для браузеров, поддерживающих свойства `scrollbar-*` */
+@supports (scrollbar-color: auto) {
+    html {
+		scrollbar-color: var(--color-highlight) var(--color-main-dark);
+    }
+}
+/* В противном случае использовать `::-webkit-scrollbar-*` псевдо-элементы */
+@supports selector(::-webkit-scrollbar) {
+    body::-webkit-scrollbar {
+	    width: 0.5em;
+    }
+    body::-webkit-scrollbar-track {
+    	background: var(--color-main-dark);
+    }
+    body::-webkit-scrollbar-thumb {
+    	background: var(--color-highlight);
+    	border-radius: 10px;
+    }
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+h2 {
+	margin: 0;
+	padding: 2rem 0 2rem 0;
+}
+h3 {
+    font-size: max(1rem, 20px) !important;
+}
+h4 {
+	font-size: min(20px, 5vw);
+	width: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+section {
+	box-sizing: content-box;
+	min-height: calc(100vh - var(--nav-height));
+	padding-top: calc(var(--nav-height) + 0.5rem) !important;
+}
+main {
+	margin-top: -1px;
+}
+.blueish-text {
+	color: var(--color-text-active);
+}
+.waves-effect.waves-blueish .waves-ripple {
+    background-color: var(--color-highlight-translucent-darken);
+}
+.material-tooltip,
+.material-toast {
+	background-color: var(--color-main-dark);
+	color: var(--color-text-active);
+	font-weight: 600;
+}
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+.row .col {
+	padding: 0.75rem 0.75rem;
+}
+.col .row {
+	margin-left: 0;
+	margin-right: 0;
+}
+.row {
+	margin-bottom: 0;
+}
+.section {
+	padding: 0;
+	width: 100%;	
+}
+.hoverable:hover {
+	-webkit-box-shadow:  0px 0px 20px 10px var(--color-shadow);
+	box-shadow:  0px 0px 20px 10px var(--color-shadow);
+	border: none;
+	transition: -webkit-box-shadow 0.5s;
+	transition: box-shadow 0.5s;
+	position: relative;
+    z-index: 2;
+}
+.hoverable:not(:hover) {
+	transition: -webkit-box-shadow 0.5s;
+	transition: box-shadow 0.5s;
+	position: relative;
+    z-index: 1;
+}
+.parallax-container {
+	height: auto;
+}
+.parallax-container .parallax {
+    mix-blend-mode: plus-lighter;
+}
+.parallax-container .parallax img {
+	opacity: 0.3 !important;
+	position: fixed;
+}
+.navbar-fixed {
+	position: absolute;
+}
+.nav-background {
+	background-color: var(--color-navbar);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+nav a {
+	color: var(--color-text-active);
+}
+nav ul a:hover {
+    background-color: unset;
+}
+.table-of-contents a {
+	line-height: unset;
+	height: 100%;
+	color: var(--color-text-active);
+	font-weight: 600;
+}
+.table-of-contents a.active {
+	background-color: var(--color-highlight-translucent);
+	border: none;
+	padding-left: 16px;
+	font-weight: 600;
+}
+.table-of-contents a:hover {
+	border: none;
+	border-bottom: 2px solid var(--color-text-active);
+	padding-left: 16px;
+	color: var(--color-text-active);
+}
+.table-of-contents li {
+	padding: 0;
+}
+.sidenav {
+	background-color: var(--color-sidenav);
+	background-color: var(--color-main-dark);
+	width: min(70vw, 300px);
+}
+.sidenav li > a {
+	color: var(--color-text-active);
+	font-weight: 600;
+	padding: 0 20px;
+}
+.sidenav li>a:hover { 
+	background-color: var(--color-highlight-translucent);
+	border-right: 2px solid var(--color-text-active);
+}
+.sidenav li>a>i, .sidenav li>a>i.material-icons {
+    color: inherit;
+	margin: 0 20px 0 0;
+}
+#home .hoverable:hover,
+#about .hoverable:hover,
+#education .hoverable:hover,
+#portfolio .collapsible li:hover,
+#contact .hoverable:hover {
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
+	transition: -webkit-box-shadow 0.5s, -webkit-backdrop-filter 0.5s;
+	transition: box-shadow 0.5s, backdrop-filter 0.5s;
+}
+#home .hoverable:not(:hover),
+#about .hoverable:not(:hover),
+#education .hoverable:not(:hover),
+#portfolio .collapsible li:not(:hover),
+#contact .hoverable:not(:hover) {
+	transition: -webkit-box-shadow 0.5s, -webkit-backdrop-filter 0.5s;
+	transition: box-shadow 0.5s, backdrop-filter 0.5s;
+}
+/* =================== */
+/* Разделы home, about */
+/* =================== */
+#about p {
+	text-indent: 30px;
+}
+#home .section {
+	background-color: var(--color-main-translucent);
+	padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+#about .section {
+	background-color: var(--color-main-translucent);
+	padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+/* =================== */
+/*  Раздел education   */
+/* =================== */
+#education h3 + p {
+	font-size: 1.15rem;
+}
+#education .container > .header {
+	background-color: var(--color-main-translucent);
+}
+.card-panel {
+	background-color: var(--color-main-translucent);
+	margin: 1rem 0 1rem 0;
+}
+/* =================== */
+/*  Раздел portfolio   */
+/* =================== */
+#portfolio .container > .section {
+	background-color: var(--color-main-translucent);
+	margin-bottom: 0.5rem;
+}
+.tabs {
+	background: none;
+	min-height: 48px;
+	height: auto;
+	white-space: normal;
+}
+.tabs .tab {
+	flex-grow: 1;
+	height: auto;
+}
+.tabs .tab a {
+	color: var(--color-text-inactive);
+	font-weight: bold;
+	font-size: min(1rem, 2.8vw);
+	font-size: calc(3px + min(0.8rem, 1.8vw));
+	line-height: 1.2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	
+}
+.tabs .tab a:hover {
+	color: var(--color-text-active);
+}
+.tabs .tab a:focus {
+    background-color: unset;
+}
+.tabs .tab a:focus.active {
+	background-color: var(--color-highlight-translucent-darken);
+}
+.tabs .tab a.active {
+	color: var(--color-text-active);
+	background-color: var(--color-highlight-translucent-darken);
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
+}
+.tabs .indicator {
+    background-color: var(--color-text-active);
+}
+#portfolio .card:hover .card-image img {
+	opacity: 90%;
+	transition: opacity 1s;
+}
+#portfolio .card:not(:hover) .card-image img {
+	transition: opacity 1s;
+}
+.portfolio__page .card {
+	height: fit-content;
+	padding: 0;
+}
+.portfolio__page.row .col.s12 {
+	width: 100%;
+}
+.portfolio__page.active,
+#portfolio-courses.active {
+	animation: page-fade-in 0.5s;
+}
+@keyframes page-fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 100%;
+	}
+}
+.card {
+	-webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+	background-color: transparent;
+	color: var(--color-text-active);
+	margin: 0 0 1rem 0;
+}
+.card .card-image {
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
+	background: transparent;
+	width: 100%;
+	display: flex;
+}
+.portfolio__page.active .card .card-image {
+	animation: blur-fade-in 2.5s;
+}
+@keyframes blur-fade-in {
+	from {
+		backdrop-filter: blur(0px) opacity(0);
+	}
+	to {
+		backdrop-filter: blur(3px) opacity(1);
+	}
+}
+.card .card-image img {
+	opacity: 90%;
+}
+.card .card-content {
+	background-color: var(--color-main-translucent);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card:hover .card-content {
+	-webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+	transition: -webkit-backdrop-filter 0.5s;
+    transition: backdrop-filter 0.5s;
+}
+.card:not(:hover) .card-content {
+	-webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+	transition: -webkit-backdrop-filter 0.5s;
+    transition: backdrop-filter 0.5s;
+}
+.card .card-content .card-title,
+.card .card-reveal .card-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 600;
+	font-size: min(20px, 5vw);
+	line-height: normal;
+	margin-bottom: 0;
+	height: auto;
+	width: 100%;
+	color: var(--color-text-active);
+	cursor: default;
+}
+.card .card-content .card-title i {
+	border: none;
+	padding: 0;
+	margin: 0;
+	height: fit-content;
+} 
+.card .card-content i {
+	font-size: min(25px, 6vw);
+	padding: 0.5vw;
+	color: var(--color-icons);
+} 
+.card .card-content i:hover {
+	color: var(--color-active);
+}
+.card-links {
+	display: flex;
+	height: fit-content;
+	margin-top: 0;
+}
+.card .card-content .card-links a {
+	margin-right: 1em;
+	margin-top: 1em;
+}
+.card .card-content p,
+.card .card-reveal__body p {
+	width: inherit;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.card .card-reveal .card-title i {
+	cursor: pointer;
+	height: fit-content;
+}
+.card .card-reveal { 
+	padding: 0;
+	background-color: var(--color-main-dark-translucent);
+	height: 101%;
+}
+.card .card-reveal .card-reveal__body { 
+	height: fit-content;
+	background-color: var(--color-main-dark);
+	padding: 24px;
+	bottom: 0px;
+    position: absolute;
+	width: 100%;
+}
+.card .card-reveal__body > p { 
+	margin-top: 1em;
+}
+.card .card-reveal i:hover {
+	background-color: var(--color-highlight-translucent);
+}
+#portfolio .collapsible .hoverable:not(:hover) {
+	transition: opacity 0.5s, -webkit-backdrop-filter 0.5s;
+	transition: opacity 0.5s, backdrop-filter 0.5s;
+}
+.collapsible {
+	border-top: none;
+	border-right: none;
+    border-left: none;
+	border-bottom: none;
+	margin: 0 0 1rem 0;
+}
+.collapsible li:last-child .collapsible-header {
+	border-bottom: none;
+}
+.collapsible-header {
+	align-items: center;
+	background-color: var(--color-main-translucent);
+	color: var(--color-text-active);
+	border-bottom: 1px solid var(--color-highlight-translucent-darken);
+	font-weight: 600;
+}
+.collapsible-header i {
+	font-size: unset;
+	color: var(--color-icons);
+	font-size: min(25px, 7vw);
+}
+.collapsible-body { 
+	border-bottom: 1px solid var(--color-highlight-translucent);
+	background-color: var(--color-main-dark-translucent);
+}
+.collapsible-body img {
+    opacity: 90%;
+	-webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    transition: opacity 1s;
+}
+.collapsible-body img:hover {
+    opacity: 90%;
+    transition: opacity 1s;
+}
+.collapsible-body img:not(:hover) {
+    transition: opacity 1s;
+}
+/* =================== */
+/*   Раздел contact    */
+/* =================== */
+#contact .container > .header {
+	background-color: var(--color-main-translucent);
+}
+form .row:first-child {
+	padding-top: 1rem;
+}
+form .btn {
+	margin-left: 3.75rem;
+	background-color: transparent;
+	color: var(--color-icons);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: 1px solid var(--color-icons);
+}
+form .btn:hover {
+	border: 1px solid var(--color-active);
+	color: var(--color-active);
+	background-color: unset;
+}
+form a.btn.disabled,
+form .btn[disabled] {
+	border: 1px solid transparent !important;
+	background-color: var(--color-disabled-translucent) !important;
+}
+.input-field {
+    margin: 0; 
+}
+.input-field > label {
+	top: 5px;
+}
+.input-field .prefix {
+	top: 13px;
+	color: var(--color-icons);
+}
+.input-field .prefix.active {
+	color: var(--color-active);
+}
+input[type=email]:not(.browser-default):disabled,
+input[type=text]:not(.browser-default):disabled,
+textarea.materialize-textarea:disabled {
+	border-bottom: 1px dashed var(--color-disabled) !important;
+	-webkit-box-shadow: unset !important;
+	box-shadow: unset !important;
+	color: var(--color-disabled);
+}
+input[disabled] ~ .character-counter, 
+textarea[disabled] ~ .character-counter {
+    color: var(--color-disabled);
+}
+textarea.materialize-textarea:disabled+label {
+	color: var(--color-disabled);
+}
+i:has(+textarea.materialize-textarea:disabled),
+i:has(+input[type=text]:not(.browser-default):disabled),
+i:has(+input[type=email]:not(.browser-default):disabled) {
+	color: var(--color-disabled);
+}
+input[type=email]:not(.browser-default),
+input[type=text]:not(.browser-default),
+textarea.materialize-textarea {
+	border-bottom: 1px solid var(--color-icons);
+}	
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+	-webkit-box-shadow: 0 1px 0 0 var(--color-active);
+	box-shadow: 0 1px 0 0 var(--color-active);
+}
+input.invalid[type=email]:not(.browser-default),
+input.invalid[type=text]:not(.browser-default), 
+input.invalid[type=text]:not(.browser-default):focus,
+textarea.materialize-textarea.invalid, 
+textarea.materialize-textarea.invalid:focus {
+	-webkit-box-shadow: 0 1px 0 0 var(--color-invalid) !important;
+    box-shadow: 0 1px 0 0 var(--color-invalid) !important;
+}
+textarea.materialize-textarea:focus:not([readonly])+label {
+	color: var(--color-disabled);
+}
+input.valid[type=text]:not(.browser-default),
+input.valid[type=text]:not(.browser-default):focus,
+input.valid[type=email]:not(.browser-default),
+input.valid[type=email]:not(.browser-default):focus,
+textarea.materialize-textarea.valid,
+textarea.materialize-textarea.valid:focus {
+	border-bottom: 1px solid var(--color-valid);
+    -webkit-box-shadow: 0 1px 0 0 var(--color-valid);
+    box-shadow: 0 1px 0 0 var(--color-valid);
+}
+textarea.materialize-textarea:focus.invalid ~ label,
+i:has(+textarea.materialize-textarea:focus.invalid),
+i:has(+input[type=text]:not(.browser-default):focus.invalid),
+i:has(+input[type=email]:not(.browser-default):focus.invalid) {
+	color: var(--color-invalid) !important
+}
+textarea.materialize-textarea:focus.valid ~ label,
+i:has(+textarea.materialize-textarea:focus.valid),
+i:has(+input[type=text]:not(.browser-default):focus.valid),
+i:has(+input[type=email]:not(.browser-default):focus.valid) {
+	color: var(--color-valid) !important
+}
+
+@media only screen and (max-width: 360px) {
+	.flow-text {
+		font-size: 1rem;
+	}
+	h5.flow-text {
+		font-size: 1.2rem;
+	}
+	.portfolio__page .card {
+		display: block !important;
+	}
+}
+@media only screen and (max-width: 600px) {
+	h1 {
+		font-size: max(8.5vw, 35px);
+		margin: 2rem 0 1rem 0;
+	}
+	h2 {
+		padding: 1rem 0 1rem 0;
+		font-size: max(6vw, 25px);
+	}
+	.card-panel {
+		padding: 12px;
+	}
+	.tabs .tab a {
+		font-size: calc(5px + min(0.8rem, 1.5vw));
+	}
+	.input-field .prefix {
+		top: 20px;
+		font-size: min(20px, 7vw);
+	}
+	.input-field {
+		margin: 0;
+	}
+	
+}
+@media only screen and (min-width: 601px) {
+	html {
+		--nav-height: 64px;
+	}
+	#portfolio .portfolio__page {
+		webkit-column-count: 1;  /* Chrome, Safari, Opera */
+		-moz-column-count: 1;     /* Firefox */
+		column-count: 1;
+	}
+	.portfolio__page .card {
+		display: flex;
+	}
+	.card .card-content {
+		width: 60%;
+	}
+	.card .card-image {
+		width: 40%;
+	}
+	.card:hover .card-content {
+		-webkit-backdrop-filter: blur(3px);
+		backdrop-filter: blur(3px);
+		transition: -webkit-backdrop-filter 0.5s;
+		transition: backdrop-filter 0.5s;
+	}
+	.collapsible .collapsible-body .row {
+		display: flex;
+		align-items: center;
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	#portfolio .portfolio__page {
+		webkit-column-count: 2; 
+		-moz-column-count: 2;     
+		column-count: 2;
+	}
+	.tabs {
+		display: flex;
+		justify-content: space-evenly;
+	}
+	.portfolio__page .card {
+		display: block ;
+	}
+	.card .card-content {
+		width: 100%;
+	}
+	.card .card-image {
+		width: 100%;
+	}
+	.card .card-image img {
+		opacity: 70%;
+	}
+	.collapsible-body img {
+		opacity: 70%;
+	}
+}
+@media only screen and (min-width: 1201px) {
+	#portfolio .portfolio__page {
+		webkit-column-count: 3; 
+		-moz-column-count: 3;     
+		column-count: 3;
+	}
+}
